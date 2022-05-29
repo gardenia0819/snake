@@ -8,10 +8,10 @@ SNAKE_HEAD_POS = [50, 50]
 
 
 class Snake:
-    def __init__(self, max_x: int, max_y: int, canvas: Canvas):
+    def __init__(self, width: int, height: int, canvas: Canvas):
         self.canvas = canvas
-        self.max_x = max_x
-        self.max_y = max_y
+        self.max_x = width - SNAKE_STEP
+        self.max_y = height - SNAKE_STEP
         self.step = SNAKE_STEP
         self.direct = SNAKE_DEFAULT_DIR
         self.body_len = SNAKE_BODY_LEN
