@@ -1,4 +1,6 @@
 import sys
+import time
+
 from snake import Snake
 from tkinter import Tk, Frame, Canvas, Button, Event, PhotoImage
 from PIL import ImageTk, Image
@@ -76,7 +78,8 @@ class Game:
     def __game_level(self):
         if self.FPS >= self.min_fps:
             self.FPS -= self.fps_step
-        self.canvas.after(self.FPS, self.__game_level)
+            print("{}: FPS: {}".format( time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time())),self.FPS))
+        self.canvas.after(2000, self.__game_level)
 
     # 开始游戏触发， 进入游戏界面， 初始化小蛇， 小蛇自动刷新， 游戏难度增加， 食物刷新
     def __start_game(self):
@@ -92,6 +95,8 @@ class Game:
         self.snake.init_snake()
         # 小蛇自动移动
         self.draw()
+        # 游戏难度
+        self.__game_level()
 
     def start(self):
         self.root.mainloop()
